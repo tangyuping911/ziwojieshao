@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唐雨萍 · 个人自我介绍</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #7c5cff;
+    --primary-light: #a78bff;
+    --accent: #ff7eb3;
+    --bg: #f4f2ff;
+    --card: #ffffff;
+    --text: #2d2a4a;
+    --text-light: #6b6890;
+  }
+
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== 顶部横幅 ===== */
+  .hero {
+    background: linear-gradient(135deg, #7c5cff 0%, #9b6dff 45%, #ff7eb3 100%);
+    color: #fff;
+    padding: 70px 20px 110px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .hero::before { width: 260px; height: 260px; top: -90px; left: -70px; }
+  .hero::after  { width: 180px; height: 180px; bottom: -60px; right: -40px; }
+
+  .avatar {
+    width: 120px; height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    border: 4px solid rgba(255,255,255,0.65);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 46px; font-weight: 700; letter-spacing: 2px;
+    backdrop-filter: blur(4px);
+    animation: float 3.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .hero .slogan {
+    font-size: 16px;
+    opacity: 0.92;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  /* ===== 内容容器 ===== */
+  .container {
+    max-width: 860px;
+    margin: -70px auto 50px;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.10);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 38px rgba(124, 92, 255, 0.18);
+  }
+
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    padding-left: 12px;
+    border-left: 5px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ===== 信息列表 ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #f8f6ff;
+    border-radius: 12px;
+  }
+  .info-item .icon {
+    width: 42px; height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .info-item .label { font-size: 13px; color: var(--text-light); }
+  .info-item .value { font-size: 16px; font-weight: 600; }
+
+  /* ===== 关于我 ===== */
+  .about p {
+    color: #4a4768;
+    text-indent: 2em;
+    margin-bottom: 10px;
+  }
+
+  /* ===== 标签 ===== */
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--primary);
+    background: #efeaff;
+    border: 1px solid #ddd2ff;
+    transition: all .2s ease;
+    cursor: default;
+  }
+  .tag:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.06);
+  }
+
+  /* ===== 联系方式 ===== */
+  .contact p { color: #4a4768; margin-bottom: 12px; }
+  .phone-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-radius: 999px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(124, 92, 255, 0.35);
+    transition: transform .2s ease;
+  }
+  .phone-box:hover { transform: scale(1.04); }
+
+  footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 13px;
+    padding: 10px 0 30px;
+  }
+
+  /* 入场动画 */
+  .card { animation: fadeUp .7s ease both; }
+  .card:nth-child(2) { animation-delay: .12s; }
+  .card:nth-child(3) { animation-delay: .24s; }
+  .card:nth-child(4) { animation-delay: .36s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="avatar">唐</div>
+    <h1>唐雨萍</h1>
+    <p class="slogan">湖南工业大学 · 数字媒体技术专业 · 以创意连接技术与艺术</p>
+  </header>
+
+  <main class="container">
+
+    <!-- 基本信息 -->
+    <section class="card">
+      <h2>🎓 基本信息</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="icon">🏫</div>
+          <div>
+            <div class="label">就读院校</div>
+            <div class="value">湖南工业大学</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="icon">📚</div>
+          <div>
+            <div class="label">专业班级</div>
+            <div class="value">数媒 2402 班</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="icon">🪪</div>
+          <div>
+            <div class="label">学号</div>
+            <div class="value">2408090602006</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="icon">📱</div>
+          <div>
+            <div class="label">手机号码</div>
+            <div class="value">18890641826</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section class="card about">
+      <h2>✨ 关于我</h2>
+      <p>大家好，我是唐雨萍，来自湖南工业大学数字媒体技术专业数媒2402班。我是一个性格开朗、做事认真的人，喜欢用创意表达想法，也乐于用技术把想法变成现实。</p>
+      <p>数字媒体技术是艺术与技术的交叉学科，我对视觉设计、交互体验、影像创作和前端开发都充满兴趣。课余时间我喜欢摄影、看展、听音乐，也在不断学习新的设计工具与编程知识，希望未来能创作出既美观又有温度的数字作品。</p>
+    </section>
+
+    <!-- 兴趣与技能 -->
+    <section class="card">
+      <h2>💡 兴趣与技能</h2>
+      <div class="tags">
+        <span class="tag">平面设计</span>
+        <span class="tag">摄影摄像</span>
+        <span class="tag">视频剪辑</span>
+        <span class="tag">UI 设计</span>
+        <span class="tag">前端开发</span>
+        <span class="tag">交互设计</span>
+        <span class="tag">动画制作</span>
+        <span class="tag">听音乐</span>
+        <span class="tag">看展旅行</span>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="card contact">
+      <h2>📮 联系我</h2>
+      <p>欢迎老师、同学与我交流学习，期待与志同道合的伙伴一起成长！</p>
+      <a class="phone-box" href="tel:18890641826">📞 18890641826</a>
+    </section>
+
+  </main>
+
+  <footer>© 2026 唐雨萍 · 个人自我介绍页面</footer>
+
+</body>
+</html>
